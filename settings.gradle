@@ -1,0 +1,2 @@
+rootProject.name='SecureDataStorage'
+include ':app'
