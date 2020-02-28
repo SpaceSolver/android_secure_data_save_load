@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">SecureDataStorage</string>
+    <string name="title_use_jetpack_library">Using Android Jetpack::Security</string>
+    <string name="button_title_jetpack_store">Store(Jetpack)</string>
+    <string name="button_title_jetpack_load">Load(Jetpack)</string>
+    <string name="button_title_jetpack_clear">clear</string>
 </resources>
