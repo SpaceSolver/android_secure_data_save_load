@@ -20,7 +20,7 @@
             android:id="@+id/TitleTextJetpack"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/title_use_jetpack_library" />
+            android:text="@string/button_title_clear" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -28,31 +28,33 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/StoreByJetpackButton"
+                android:id="@+id/StoreButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="onStoreButtonClicked"
-                android:text="@string/button_title_jetpack_load" />
+                android:text="@string/button_title_store" />
 
             <Button
-                android:id="@+id/LoadByJetpackButton"
+                android:id="@+id/LoadButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="onLoadButtonClicked"
-                android:text="@string/button_title_jetpack_load" />
+                android:text="@string/button_title_load" />
 
             <Button
-                android:id="@+id/Clear"
+                android:id="@+id/ClearButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="onClearButtonClicked"
-                android:text="@string/button_title_jetpack_clear" />
+                android:text="@string/button_title_clear" />
         </LinearLayout>
 
         <TextView
-            android:id="@+id/LogTextJetpack"
+            android:id="@+id/LogText"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollHorizontally="true" />
 
     </LinearLayout>
 

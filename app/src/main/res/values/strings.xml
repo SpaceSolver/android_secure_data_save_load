@@ -1,7 +1,17 @@
 <resources>
     <string name="app_name">SecureDataStorage</string>
-    <string name="title_use_jetpack_library">Using Android Jetpack::Security</string>
-    <string name="button_title_jetpack_store">Store(Jetpack)</string>
-    <string name="button_title_jetpack_load">Load(Jetpack)</string>
-    <string name="button_title_jetpack_clear">clear</string>
+    <string name="title">Using Android KeyStore</string>
+    <string name="button_title_store">Store</string>
+    <string name="button_title_load">Load</string>
+    <string name="button_title_clear">clear</string>
+
+    <!--
+        TODO: Aliasに"適切な"名称はあるのだろうか？
+        何となく「システムでユニーク」じゃないといけない気がする
+        のでまぁ、いつものドメイン名さかのぼるアレでやればいいのかなと
+    -->
+    <string name="SecureKeyAlias">key alias sample</string>
+
+    <string name="KeyProviderName">AndroidKeyStore</string>
+    <string name="EncryptAlgorith">RSA/ECB/OAEPWithSHA-256AndMGF1Padding</string>
 </resources>
