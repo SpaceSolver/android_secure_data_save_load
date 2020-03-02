@@ -1,8 +1,10 @@
 <resources>
     <string name="app_name">SecureDataStorage</string>
     <string name="title">Using Android KeyStore</string>
-    <string name="button_title_store">Store</string>
-    <string name="button_title_load">Load</string>
+    <string name="encrypt_string_default">string to encrypt</string>
+    <string name="encrypted_string_default">encrypted result</string>
+    <string name="button_title_store">encrypt</string>
+    <string name="button_title_load">decrypt</string>
     <string name="button_title_clear">clear</string>
 
     <!--

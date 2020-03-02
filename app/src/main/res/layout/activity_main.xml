@@ -22,6 +22,25 @@
             android:layout_height="wrap_content"
             android:text="@string/button_title_clear" />
 
+        <EditText
+            android:id="@+id/encryptText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="@string/encrypt_string_default" />
+
+        <TextView
+            android:id="@+id/encryptedText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/encrypted_string_default" />
+
+        <TextView
+            android:id="@+id/decryptedOutputView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -31,14 +50,14 @@
                 android:id="@+id/StoreButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="onStoreButtonClicked"
+                android:onClick="onEncryptButtonClicked"
                 android:text="@string/button_title_store" />
 
             <Button
                 android:id="@+id/LoadButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="onLoadButtonClicked"
+                android:onClick="onDecryptButtonClicked"
                 android:text="@string/button_title_load" />
 
             <Button
