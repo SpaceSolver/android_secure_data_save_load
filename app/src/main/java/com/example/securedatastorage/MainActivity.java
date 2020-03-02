@@ -7,6 +7,7 @@ package com.example.securedatastorage;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.security.keystore.KeyGenParameterSpec;
 import android.security.keystore.KeyProperties;
@@ -40,6 +41,7 @@ import javax.crypto.spec.PSource;
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = MainActivity.class.getSimpleName();
+    private static final String PrefKey = "User";
     private TextView encryptTextView;
     private TextView encryptedResultView;
     private TextView decryptResultView;
@@ -62,6 +64,32 @@ public class MainActivity extends AppCompatActivity {
         providerName = getString(R.string.KeyProviderName);
         aliasName = getString(R.string.SecureKeyAlias);
         prepareKeyStore(aliasName, providerName);
+
+        loadSavedData();
+    }
+
+    private void loadSavedData(){
+        SharedPreferences pref = getSharedPreferences(getPackageName(), MODE_PRIVATE);
+        String saved = pref.getString(PrefKey, "");
+        if( saved != "" ) {
+            String result = null;
+            try {
+                result = decryptString(mKeyStore, aliasName, saved);
+            } catch (NoSuchPaddingException e) {
+                e.printStackTrace();
+            } catch (UnrecoverableKeyException e) {
+                e.printStackTrace();
+            } catch (NoSuchAlgorithmException e) {
+                e.printStackTrace();
+            } catch (KeyStoreException e) {
+                e.printStackTrace();
+            } catch (InvalidKeyException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            encryptedResultView.setText("saved key is [" + saved + "] decrypt to [" + result + "]");
+        }
     }
 
     private void log(String s){
@@ -184,5 +212,24 @@ public class MainActivity extends AppCompatActivity {
         encryptTextView.setText(getString(R.string.encrypt_string_default));
         encryptedResultView.setText(getString(R.string.encrypted_string_default));
         decryptResultView.setText(null);
+    }
+
+    // SharedPreferences need apply() method to make data stable.
+    public void onSaveButtonClicked(View view) {
+        String body = encryptedResultView.getText().toString();
+        SharedPreferences pref = getSharedPreferences(getPackageName(), MODE_PRIVATE);
+        pref.edit().putString(PrefKey, body).apply();
+    }
+
+    public void onLoadButtonClicked(View view) {
+        SharedPreferences pref = getSharedPreferences(getPackageName(), MODE_PRIVATE);
+        String saved = pref.getString(PrefKey, "");
+        log("saved key is [" + saved + "]");
+        encryptedResultView.setText("saved key is [" + saved + "]");
+    }
+
+    public void onPurgeButtonClicked(View view) {
+        SharedPreferences pref = getSharedPreferences(getPackageName(), MODE_PRIVATE);
+        pref.edit().remove(PrefKey).apply();
     }
 }

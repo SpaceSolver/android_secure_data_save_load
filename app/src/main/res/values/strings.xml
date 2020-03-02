@@ -3,9 +3,12 @@
     <string name="title">Using Android KeyStore</string>
     <string name="encrypt_string_default">string to encrypt</string>
     <string name="encrypted_string_default">encrypted result</string>
-    <string name="button_title_store">encrypt</string>
-    <string name="button_title_load">decrypt</string>
+    <string name="button_title_encrypt">encrypt</string>
+    <string name="button_title_decrpyt">decrypt</string>
     <string name="button_title_clear">clear</string>
+    <string name="button_title_save">save</string>
+    <string name="button_title_load">load</string>
+    <string name="button_title_purge">purge</string>
 
     <!--
         TODO: Aliasに"適切な"名称はあるのだろうか？

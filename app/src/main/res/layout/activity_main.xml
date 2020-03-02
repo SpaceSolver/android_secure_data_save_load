@@ -20,7 +20,7 @@
             android:id="@+id/TitleTextJetpack"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/button_title_clear" />
+            android:text="@string/title" />
 
         <EditText
             android:id="@+id/encryptText"
@@ -47,18 +47,18 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/StoreButton"
+                android:id="@+id/EncryptButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="onEncryptButtonClicked"
-                android:text="@string/button_title_store" />
+                android:text="@string/button_title_encrypt" />
 
             <Button
-                android:id="@+id/LoadButton"
+                android:id="@+id/DecryptButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="onDecryptButtonClicked"
-                android:text="@string/button_title_load" />
+                android:text="@string/button_title_decrpyt" />
 
             <Button
                 android:id="@+id/ClearButton"
@@ -66,6 +66,33 @@
                 android:layout_height="wrap_content"
                 android:onClick="onClearButtonClicked"
                 android:text="@string/button_title_clear" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/SaveButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onSaveButtonClicked"
+                android:text="@string/button_title_save" />
+
+            <Button
+                android:id="@+id/LoadButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onLoadButtonClicked"
+                android:text="@string/button_title_load" />
+
+            <Button
+                android:id="@+id/PurgeButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onPurgeButtonClicked"
+                android:text="@string/button_title_purge" />
         </LinearLayout>
 
         <TextView

@@ -1,7 +1,14 @@
 # 内蔵ストレージに暗号化データを保持する
 
+# 検討必要かもトピック
+
+* KeyStoreに指定するaliasはグローバルにユニークじゃないといけないのか？
+
 # 参考URLと読んだ感想
 
+* https://coky-t.gitbook.io/owasp-mstg-ja/android-tesutogaido/0x05d-testing-data-storage
+   * セキュリティ観点におけるandroidのデータストレージの種類の説明
+   * *androidのテスト* の文脈ではあるが基本の勉強の参考になる
 * https://developer.android.com/training/articles/security-tips
    * 基本は「内部ストレージ」で良い（様にandroidは設計されている)
    * コンテンツプロバイダ := 他のアプリと共有する仕組み
@@ -29,10 +36,44 @@
    * 説明はわかる。けど「で、なになん？」が薄い。。。
    * ので、↓のURLを参考にした
 * https://qiita.com/f_nishio/items/485490dea126dbbb5001
+   * サンプルあるので良い
+   * が、そのままだと IllegalBlockSizeException が出てうまくいかない
+   * https://teratail.com/questions/122006 を参考にEncpyt時の`Cipher#init`に`spec`を指定するとうまくいった
+      * Decrypt時には不要だったが、理由は理解しきれていない
 
-# 使い方
+# アプリの外観(ソースコード)
 
-## Jetpack::Security
+* 暗号化、複合化の処理と、暗号化データのSharedPreferenceへの保存
+   * 保存するデータはkey:"User"として1つだけ保存
+* 各データはSharedPreferenceへの保存を見越してBase64エンコードしている
+   * 公式のサンプルもそうなってる
+* 認証キーを生成
+   * MainActivity.java#createNewKey
+* キーを使って暗号化
+   * MainActivity.java#encryptString
+* キーを使って複合化
+   * MainActivity.java#decryptString
+* 暗号化データの保存(SharedPreference)
+   * MainActivity.java#onSaveButtonClicked
+* 保存データの読み出し(SharedPreference)
+   * MainActivity.java#onLoadButtonClicked
+* 保存データの破棄(SharedPreference)
+   * MainActivity.java#onPurgeButtonClicked
+* 起動時に保存データがあるかどうか確認しつつ複合化
+   * MainActivity.java#loadSavedData
 
-1. jetpackライブラリを有効にする
-   * https://developer.android.com/jetpack/docs/getting-started 
+# アプリの外観(見た目)
+
+* [ENCRYPT]ボタン
+   * テキストボックス内の文字列を暗号化して結果を表示
+* [DECRYPT]ボタン
+   * テキストボックス内の文字列を複合化して結果を表示(encryptとは別窓)
+* [CLEAR]ボタン
+   * 暗号化/複合化データの初期化
+* [SAVE]ボタン
+   * **[ENCRYT]ボタンを押してから使います**
+   * 暗号化データをSharedPreferenceに保存
+* [LOAD]ボタン
+   * SharedPreferenceに保存しているデータの読み出し
+* [PURGE]ボタン
+   * SharedPreferenceに保存しているデータの破棄
